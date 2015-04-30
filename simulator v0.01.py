@@ -21,7 +21,7 @@ class Trader:
 
 	def sendOrder(exchange,time):
 		self.order = self.order_queue.cancelOrder()
-		self.exchange.receiveOrder(order,time)
+		self.exchange.receive_order(order,time)
 
 	def readOrder(self):
 		f = open("trader"+str(self.ID)+".csv" , "r")

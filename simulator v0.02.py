@@ -2,7 +2,6 @@
 # coding: utf8
 from Queue import Queue
 import string
-import time
 
 def creatOrder(file_line):
 	list = string.split(str(file_line.rstrip('\n')) , ",")
@@ -23,7 +22,7 @@ class Trader:
 		self.number_of_order = 0
 
 	def sendOrder(self, exchange, time):
-		exchange.receiveOrder(self.order,time)
+		exchange.receive_order(self.order,time)
 		print "send order:"+str(self.order.ID)
 		if self.order_queue.empty() == False:
 			self.order = self.order_queue.get()

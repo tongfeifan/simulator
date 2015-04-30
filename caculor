@@ -1,0 +1,33 @@
+import random
+import math
+
+f = file("1.csv", "w")
+
+k = 3
+r = 135
+lamd = r/1760.0
+
+erlang_list = []
+
+for _ in xrange(1,10000):
+    random_list = []
+    for _ in xrange(1,k):
+        random_list.append(random.uniform(0,1))
+
+    erlang = 0
+    for rand in random_list:
+        erlang -= (1/lamd)*math.log(rand)
+    erlang_list.append(erlang)
+
+amount = [0]
+for i in xrange(1,500):
+    amount.append(0)
+for in_time in erlang_list:
+    if in_time > 500:
+        in_time = 0
+    amount[int(in_time)] += 1
+
+for a in amount:
+    f.write(str(a)+",")
+
+f.close()
